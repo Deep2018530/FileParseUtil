@@ -1,6 +1,6 @@
 package com.deepz.fileparse;
 
-import com.deepz.fileparse.Vo.StructableFileVO;
+import com.deepz.fileparse.vo.StructableFileVO;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.*;
@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -129,29 +128,31 @@ public class ExcelParser extends FileParser {
         List<Object> cellDatas = new ArrayList<>();
         for (Cell cell : row) {
             CellType cellType = cell.getCellType();
-            if (cellType.equals(CellType.BOOLEAN)) {
-                cellDatas.add(cell.getBooleanCellValue());
-            } else if (cellType.equals(CellType.NUMERIC)) {
-                //判断是否为日期时间格式
-                if (HSSFDateUtil.isCellDateFormatted(cell)) {
-                    cellDatas.add(cell.getDateCellValue().getTime());
-                } else {
-                    String strValue = String.valueOf(cell.getNumericCellValue());
-                    if (strValue.contains(".") && !strValue.endsWith(".0") && !strValue.toUpperCase().contains("E")) {
-                        //如果是小数
-                        cellDatas.add(Double.parseDouble(strValue));
-                    } else if (strValue.toUpperCase().contains("E")) {
-                        //消除科学计数法
-                        DecimalFormat df = new DecimalFormat("0");
-                        cellDatas.add(df.format(cell.getNumericCellValue()));
+            switch (cellType) {
+                case NUMERIC: //判断是否为日期时间格式
+                    if (HSSFDateUtil.isCellDateFormatted(cell)) {
+                        cellDatas.add(cell.getDateCellValue().getTime());
                     } else {
-                        //整数,排除了科学计数法那么长的整数，剩下的整数long应该够用了,并且把类似1.0截取成1
-                        cellDatas.add(Long.parseLong(strValue.substring(0, strValue.lastIndexOf('.'))));
-                    }
+                        String strValue = String.valueOf(cell.getNumericCellValue());
+                        if (strValue.contains(".") && !strValue.endsWith(".0") && !strValue.toUpperCase().contains("E")) {
+                            //如果是小数
+                            cellDatas.add(Double.parseDouble(strValue));
+                        } else if (strValue.toUpperCase().contains("E")) {
+                            //消除科学计数法
+                            DecimalFormat df = new DecimalFormat("0");
+                            cellDatas.add(df.format(cell.getNumericCellValue()));
+                        } else {
+                            //整数,排除了科学计数法那么长的整数，剩下的整数long应该够用了,并且把类似1.0截取成1
+                            cellDatas.add(Long.parseLong(strValue.substring(0, strValue.lastIndexOf('.'))));
+                        }
 
-                }
-            } else {
-                cellDatas.add(cell.getStringCellValue());
+                    }
+                    break;
+                case BOOLEAN:
+                    cellDatas.add(cell.getBooleanCellValue());
+                    break;
+                default:
+                    cellDatas.add(cell.getStringCellValue());
             }
         }
 
@@ -192,12 +193,16 @@ public class ExcelParser extends FileParser {
             //获取单元格类型
             CellType cellType = cell.getCellType();
 
-            if (cellType.equals(CellType.NUMERIC)) {
-                headers.add(String.valueOf(cell.getNumericCellValue()));
-            } else if (cellType.equals(CellType.BLANK)) {
-                //如果剩下的都说空的，那么就不添加
-            } else {
-                headers.add(cell.getStringCellValue());
+            switch (cellType) {
+                case NUMERIC:
+                    headers.add(String.valueOf(cell.getNumericCellValue()));
+                    break;
+                case BLANK:
+                    //如果剩下的都说空的，那么就不添加
+                    break;
+                default:
+                    headers.add(cell.getStringCellValue());
+                    break;
             }
         }
         if (headers.size() == 1) {

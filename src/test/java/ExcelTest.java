@@ -1,8 +1,7 @@
 import com.deepz.fileparse.ExcelParser;
-import com.deepz.fileparse.Vo.StructableFileVO;
+import com.deepz.fileparse.vo.StructableFileVO;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**

@@ -1,4 +1,4 @@
-package com.deepz.fileparse.Vo;
+package com.deepz.fileparse.vo;
 
         import java.util.List;
 
