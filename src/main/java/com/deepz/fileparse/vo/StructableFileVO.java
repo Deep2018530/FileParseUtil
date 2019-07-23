@@ -29,4 +29,5 @@ public class StructableFileVO {
     public void setDataRows(Object[][] dataRows) {
         this.dataRows = dataRows;
     }
+
 }
