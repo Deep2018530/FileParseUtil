@@ -26,7 +26,7 @@ public class FileTest {
     @Test
     public void process() {
         String path = "C:\\Users\\zhangdingping\\Desktop\\tika\\tika.json";
-        jsonParser.process(path);
+        jsonParser.parse(path);
     }
 
     /**

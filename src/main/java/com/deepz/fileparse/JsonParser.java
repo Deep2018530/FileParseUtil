@@ -3,6 +3,7 @@ package com.deepz.fileparse;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.deepz.fileparse.enums.JSONEnum;
 import com.deepz.fileparse.vo.StructableFileVO;
 
 import java.io.File;
@@ -18,13 +19,27 @@ import java.util.stream.Collectors;
  */
 public class JsonParser extends FileParser {
 
-    public void process(String path) {
+    public StructableFileVO parse(String path) {
         StructableFileVO fileVO = new StructableFileVO();
         String text = super.getText(new File(path));
-        fileVO.setHeaders(getHeaders(text));
-        //List<List<Object>> data = getData(text);
+        List<String> headers = getHeaders(text);
+        fileVO.setHeaders(headers);
+        //List<List<Object>> data = getData(text, headers);
         //System.out.println(data.toString());
         System.out.println(fileVO.toString());
+        return fileVO;
+    }
+
+    /**
+     * @author zhangdingping
+     * @description 获取json字符串数据值
+     * @date 2019/7/24 11:05
+     */
+    private List<List<Object>> getData(String text, List<String> headers) {
+        if (headers == null) {
+            //列为空
+        }
+        return null;
     }
 
     /**
@@ -33,10 +48,10 @@ public class JsonParser extends FileParser {
      * @date 2019/7/23 14:08
      */
     private List<String> getHeaders(String jsonStr) {
-        int checkJson = checkJson(jsonStr);
-        if (checkJson == 1) {
+        JSONEnum checkJson = checkJson(jsonStr);
+        if (checkJson == JSONEnum.JSONArray) {
             return getDistinctKeys(JSON.parseArray(jsonStr));
-        } else if (checkJson == 0) {
+        } else if (checkJson == JSONEnum.JSONObject) {
             return getKeys(JSON.parseObject(jsonStr));
         }
         return null;
@@ -50,6 +65,9 @@ public class JsonParser extends FileParser {
     public List<String> getKeys(JSONObject jsonObject) {
         List<String> headers = new ArrayList<>();
         Set<String> strings = jsonObject.keySet();
+        if (strings.size() == 0) {
+            return null;
+        }
         headers.addAll(strings);
         return headers;
     }
@@ -71,22 +89,34 @@ public class JsonParser extends FileParser {
             return headers.stream().distinct().collect(Collectors.toList());
         } else if (size == 1) {
             //只有一个对象，那么直接把这个对象的key放入heads中就行了
-            return getKeys(jsonArray.getJSONObject(0));
+
+            //防止[1]这种情况，1不能转换成JSONObject
+            Object obj = jsonArray.get(0);
+            JSONEnum checkJson = checkJson(obj.toString());
+            if (checkJson != JSONEnum.JSONObject) {
+                return null;
+            }
+            return getKeys((JSONObject) obj);
         } else {
             return null;
 
         }
     }
 
-    private int checkJson(String jsonStr) {
+    /**
+     * @author zhangdingping
+     * @description 检测并返回字符串解析后的类型
+     * @date 2019/7/24 11:22
+     */
+    public JSONEnum checkJson(String jsonStr) {
         if (jsonStr.startsWith("[")) {
             //如果是JSONArray
-            return 1;
+            return JSONEnum.JSONArray;
         } else if (jsonStr.startsWith("{")) {
             //如果是JSONObject
-            return 0;
+            return JSONEnum.JSONObject;
         } else {
-            return -1;
+            return JSONEnum.NotJSON;
         }
     }
 }
