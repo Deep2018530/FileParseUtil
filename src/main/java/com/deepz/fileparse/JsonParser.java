@@ -19,14 +19,19 @@ import java.util.stream.Collectors;
  */
 public class JsonParser extends FileParser {
 
+    /**
+     * @author zhangdingping
+     * @description 解析文件
+     * @date 2019/7/24 15:58
+     */
     public StructableFileVO parse(String path) {
         StructableFileVO fileVO = new StructableFileVO();
         String text = super.getText(new File(path));
         List<String> headers = getHeaders(text);
         fileVO.setHeaders(headers);
-        //List<List<Object>> data = getData(text, headers);
-        //System.out.println(data.toString());
-        System.out.println(fileVO.toString());
+        Object[][] data = getData(text, fileVO.getHeaders());
+        fileVO.setDataRows(data);
+        System.out.println(data);
         return fileVO;
     }
 
@@ -35,11 +40,49 @@ public class JsonParser extends FileParser {
      * @description 获取json字符串数据值
      * @date 2019/7/24 11:05
      */
-    private List<List<Object>> getData(String text, List<String> headers) {
+    private Object[][] getData(String jsonStr, List<String> headers) {
+        List<List<Object>> results = new ArrayList<>();
+
+        JSONEnum checkJson = checkJson(jsonStr);
         if (headers == null) {
-            //列为空
+            List<Object> result = new ArrayList<>();
+            switch (checkJson) {
+                case JSONArray:
+                    JSONArray jsonArray = JSON.parseArray(jsonStr);
+                    for (int i = 0; i < jsonArray.size(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        List<Object> value = getValue(headers, jsonObject);
+                        result.add(value);
+                    }
+                    results.add(result);
+                    break;
+                case JSONObject:
+                    JSONObject jsonObject = JSON.parseObject(jsonStr);
+                    results.add(getValue(headers, jsonObject));
+                    break;
+                case NotJSON:
+                    break;
+                default:
+                    break;
+            }
         }
-        return null;
+
+
+        Object[][] obj = new Object[results.size()][];
+        for (int i = 0; i < obj.length; i++) {
+            obj[i] = results.get(i).toArray();
+        }
+
+        return obj;
+    }
+
+    private List<Object> getValue(List<String> headers, JSONObject jsonObject) {
+        List<Object> result = new ArrayList<>();
+        for (int i = 0; i < headers.size(); i++) {
+            Object obj = jsonObject.get(headers.get(i));
+            result.add(obj);
+        }
+        return result;
     }
 
     /**
