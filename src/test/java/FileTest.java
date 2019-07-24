@@ -3,7 +3,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.deepz.fileparse.JsonParser;
 import com.deepz.fileparse.PptParser;
-import com.deepz.fileparse.vo.StructableFileVO;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,15 +21,12 @@ public class FileTest {
     PptParser parser = new PptParser();
 
     JsonParser jsonParser = new JsonParser();
-    String path = "C:\\Users\\zhangdingping\\Desktop\\tika\\array.json";
+    String path = "C:\\Users\\zhangdingping\\Desktop\\tika\\null.json";
 
     @Test
     public void process() {
-        String text = jsonParser.getText(path);
-        StructableFileVO fileVO = new StructableFileVO();
-//        fileVO.setHeaders(getHeaders(text));
-        List<List<Object>> data = getData(text);
-        System.out.println(JSON.parse(data.toString()));
+        String path = "C:\\Users\\zhangdingping\\Desktop\\tika\\tika.json";
+        jsonParser.process(path);
     }
 
     /**
@@ -46,6 +42,11 @@ public class FileTest {
         int checkJson1 = checkJson(jsonStr);
         if (checkJson1 == 1) {
             JSONArray jsonArray = JSON.parseArray(jsonStr);
+
+            JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+            boolean b = jsonObject1.containsValue(null);
+            JSONArray aad = jsonObject1.getJSONArray("aad");
+            boolean contains = aad.contains(null);
             if (jsonArray.get(0) == null && jsonArray.size() == 1) {
                 List<Object> list = new ArrayList<>();
                 list.add(null);
@@ -62,6 +63,16 @@ public class FileTest {
             for (int i = 0; i < jsonArray.size(); i++) {
                 List<Object> result = new ArrayList<>();
 
+                //
+                String s = jsonArray.get(0).toString();
+                String[] split = s.split(",");
+                for (int i1 = 0; i1 < split.length; i1++) {
+                    if (split[i1].contains("null") || split[i1].contains(" ")) {
+                        System.out.println("这是个空空");
+                    }
+                }
+
+                //
                 JSONObject jsonObject = JSON.parseObject(jsonArray.get(i).toString());
                 if (jsonObject.size() == 0) {
                     List<Object> list = new ArrayList<>();
@@ -119,6 +130,16 @@ public class FileTest {
         for (int i = 0; i < jsonArray.size(); i++) {
             List<Object> result = new ArrayList<>();
             System.out.println(jsonArray.get(i).toString());
+            //
+            String s = jsonArray.get(0).toString();
+            String[] split = s.split(",");
+            for (int i1 = 0; i1 < split.length; i1++) {
+                if (split[i1].contains("null") || split[i1].contains(" ")) {
+                    System.out.println("这是个空空");
+                }
+            }
+
+            //
             JSONObject jsonObject = JSON.parseObject(jsonArray.get(i).toString());
             Set<Map.Entry<String, Object>> entries = jsonObject.entrySet();
             for (Map.Entry<String, Object> entry : entries) {
