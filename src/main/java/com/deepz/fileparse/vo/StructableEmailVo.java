@@ -38,7 +38,6 @@ public class StructableEmailVo {
      * 邮件内容
      */
     private String plainContent;
-
     /**
      * html邮件内容
      */

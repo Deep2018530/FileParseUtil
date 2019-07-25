@@ -1,6 +1,7 @@
 package com.deepz.fileparse;
 
 import com.deepz.fileparse.exception.NotPdfFileException;
+import com.deepz.fileparse.vo.StructablePdfVo;
 import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;
 import org.apache.pdfbox.io.RandomAccessRead;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -25,15 +26,28 @@ import java.util.Map;
  * @date 2019/7/19 10:21
  * @description
  */
-public class PdfParser extends FileParser {
+public class PdfParser implements FileParse<StructablePdfVo> {
+
 
     /**
-     * @author 张定平
-     * @description 获取pdf文件中的文本内容
-     * @date 2019/7/19 10:28
+     * @author zhangdingping
+     * @description 解析pdf文件
+     * @date 2019/7/25 16:30
      */
     @Override
-    public String getText(File file) {
+    public StructablePdfVo parse(String path) {
+        StructablePdfVo pdfVo = new StructablePdfVo();
+        pdfVo.setContent(getContent(path));
+        pdfVo.setHeads(getTitleAndPage(path));
+        return pdfVo;
+    }
+
+    /**
+     * @author zhangdingping
+     * @description 获取pdf文件中的文本内容
+     * @date 2019/7/25 16:31
+     */
+    public String getContent(File file) {
 
         if (!file.isFile() || !file.getAbsolutePath().toUpperCase().endsWith(".PDF")) {
             throw new NotPdfFileException("无法解析非PDF文件,请检查该文件是否为一个文件，其次查看是否为pdf文件");
@@ -56,13 +70,11 @@ public class PdfParser extends FileParser {
     }
 
     /**
-     * @author 张定平
+     * @author zhangdingping
      * @description 获取pdf文件中的文本内容
-     * @date 2019/7/19 10:42
+     * @date 2019/7/25 16:31
      */
-    @Override
-    public String getText(String filePath) {
-
+    public String getContent(String filePath) {
         File file = new File(filePath);
 
         if (!file.isFile() || !file.getAbsolutePath().toUpperCase().endsWith(".PDF")) {
@@ -86,39 +98,40 @@ public class PdfParser extends FileParser {
     }
 
     /**
-     * @author 张定平
-     * @description 获取pdf中的目录和对应页码
-     * @date 2019/7/19 10:57
-     */
-    public Map<Integer, String> getTitleAndPage(File file) {
-
-        Map<Integer, String> map = new LinkedHashMap<>();
-
-        if (!file.isFile() || !file.getAbsolutePath().toUpperCase().endsWith(".PDF")) {
-            throw new NotPdfFileException("无法解析非PDF文件,请检查该文件是否为一个文件，其次查看是否为pdf文件");
-        }
-        PDDocument pdDocument;
-        try (InputStream is = new RandomAccessBufferedFileInputStream(file)) {
-            PDFParser parser = new PDFParser((RandomAccessRead) is);
-            parser.parse();
-            pdDocument = parser.getPDDocument();
-            PDDocumentOutline outline = pdDocument.getDocumentCatalog().getDocumentOutline();
-            if (outline != null) {
-                printBookmarks(outline, "", map);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return map;
-
-    }
-
-    /**
-     * @author 张定平
+     * @author zhangdingping
      * @description
-     * @date 2019/7/19 11:05
+     * @date 2019/7/25 16:29
      */
-    public Map<Integer, String> getTitleAndPage(String filePath) {
+    public List<StructablePdfVo.Head> getTitleAndPage(File file) {
+
+        Map<Integer, String> map = new LinkedHashMap<>();
+
+        if (!file.isFile() || !file.getAbsolutePath().toUpperCase().endsWith(".PDF")) {
+            throw new NotPdfFileException("无法解析非PDF文件,请检查该文件是否为一个文件，其次查看是否为pdf文件");
+        }
+        PDDocument pdDocument;
+        List<StructablePdfVo.Head> heads = new ArrayList<>();
+        try (InputStream is = new RandomAccessBufferedFileInputStream(file)) {
+            PDFParser parser = new PDFParser((RandomAccessRead) is);
+            parser.parse();
+            pdDocument = parser.getPDDocument();
+            PDDocumentOutline outline = pdDocument.getDocumentCatalog().getDocumentOutline();
+            if (outline != null) {
+                printBookmarks(outline, "", heads);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return heads;
+
+    }
+
+    /**
+     * @author zhangdingping
+     * @description
+     * @date 2019/7/25 16:29
+     */
+    public List<StructablePdfVo.Head> getTitleAndPage(String filePath) {
         File file = new File(filePath);
         Map<Integer, String> map = new LinkedHashMap<>();
 
@@ -126,49 +139,29 @@ public class PdfParser extends FileParser {
             throw new NotPdfFileException("无法解析非PDF文件,请检查该文件是否为一个文件，其次查看是否为pdf文件");
         }
         PDDocument pdDocument;
+        List<StructablePdfVo.Head> heads = new ArrayList<>();
         try (InputStream is = new RandomAccessBufferedFileInputStream(file)) {
             PDFParser parser = new PDFParser((RandomAccessRead) is);
             parser.parse();
             pdDocument = parser.getPDDocument();
             PDDocumentOutline outline = pdDocument.getDocumentCatalog().getDocumentOutline();
             if (outline != null) {
-                printBookmarks(outline, "", map);
+                printBookmarks(outline, "", heads);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return map;
+        return heads;
 
     }
 
 
     /**
-     * @author 张定平
-     * @description 获取PDF文件的所有标题(目录)
-     * @date 2019/7/19 14:25
+     * @author zhangdingping
+     * @description
+     * @date 2019/7/25 16:29
      */
-    public List<String> getTitle(File file) {
-        List<String> list = new ArrayList<>();
-
-        if (!file.isFile() || !file.getAbsolutePath().toUpperCase().endsWith(".PDF")) {
-            throw new NotPdfFileException("无法解析非PDF文件,请检查该文件是否为一个文件，其次查看是否为pdf文件");
-        }
-        PDDocument pdDocument;
-        try (InputStream is = new RandomAccessBufferedFileInputStream(file)) {
-            PDFParser parser = new PDFParser((RandomAccessRead) is);
-            parser.parse();
-            pdDocument = parser.getPDDocument();
-            PDDocumentOutline outline = pdDocument.getDocumentCatalog().getDocumentOutline();
-            if (outline != null) {
-                printBookmarks(outline, "", list);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    private void printBookmarks(PDOutlineNode bookmark, String indentation, Map<Integer, String> map) throws IOException {
+    private void printBookmarks(PDOutlineNode bookmark, String indentation, List<StructablePdfVo.Head> heads) throws IOException {
         PDOutlineItem current = bookmark.getFirstChild();
         while (current != null) {
             int pages = 0;
@@ -183,25 +176,13 @@ public class PdfParser extends FileParser {
                     pages = pd.retrievePageNumber() + 1;
                 }
             }
-            if (pages == 0) {
-                map.put(null, current.getTitle());
-                System.out.println(indentation + current.getTitle());
-            } else {
-                map.put(pages, current.getTitle());
-                System.out.println(indentation + current.getTitle() + "  " + pages);
-            }
-            printBookmarks(current, indentation + "    ", map);
+            StructablePdfVo.Head head = new StructablePdfVo.Head();
+            head.setPage(pages == 0 ? null : String.valueOf(pages));
+            head.setTitle(current.getTitle());
+            heads.add(head);
+            printBookmarks(current, indentation + "    ", heads);
             current = current.getNextSibling();
         }
     }
 
-    private void printBookmarks(PDOutlineNode bookmark, String indentation, List<String> list) throws IOException {
-        PDOutlineItem current = bookmark.getFirstChild();
-        while (current != null) {
-
-            list.add(current.getTitle());
-            printBookmarks(current, indentation + "    ", list);
-            current = current.getNextSibling();
-        }
-    }
 }

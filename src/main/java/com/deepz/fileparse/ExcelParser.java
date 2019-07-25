@@ -1,14 +1,14 @@
 package com.deepz.fileparse;
 
+import com.deepz.fileparse.vo.StructableExcelVo;
 import com.deepz.fileparse.vo.StructableFileVO;
-import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -20,52 +20,24 @@ import java.util.List;
  * @date 2019/7/19 13:51
  * @description
  */
-public class ExcelParser extends FileParser {
+public class ExcelParser implements FileParse<StructableExcelVo> {
 
     /**
      * @author 张定平
-     * @description 解析execl文件(2007 +, 后缀.xlsx)
-     * @date 2019/7/22 14:20
-     */
-    private List<StructableFileVO> extractXssfContents(File file) {
-        String path = file.getAbsolutePath();
-        try (FileInputStream fileIn = new FileInputStream(path)) {
-
-            //获取execl文件工作空间
-            Workbook wb = new XSSFWorkbook(fileIn);
-
-            return extractWorkBook(wb);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    /**
-     * @author 张定平
-     * @description 解析文件（97-2007后缀为.xls）
+     * @description 解析Excel文件
      * @date 2019/7/22 10:35
      */
-    public List<StructableFileVO> extractHssfContents(File file) {
-
-
-        String path = file.getAbsolutePath();
-        try (FileInputStream fileIn = new FileInputStream(path)) {
-            POIFSFileSystem fs = new POIFSFileSystem(fileIn);
-            //获取execl文件工作空间
-            HSSFWorkbook wb = new HSSFWorkbook(fs);
-
-            return extractWorkBook(wb);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    @Override
+    public StructableExcelVo parse(String path) {
+        boolean isXlsx = path.toUpperCase().endsWith(".XLSX");
+        Workbook wb = null;
+        try {
+            //解析execl文件(2007+ 后缀.xlsx    HSSF对应2007-)
+            wb = isXlsx == true ? new XSSFWorkbook(path) : new HSSFWorkbook(new POIFSFileSystem(new FileInputStream(path)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return null;
+        return extractWorkBook(wb);
     }
 
 
@@ -74,7 +46,7 @@ public class ExcelParser extends FileParser {
      * @description 解析excel的工作空间
      * @date 2019/7/22 14:21
      */
-    private List<StructableFileVO> extractWorkBook(Workbook wb) {
+    private StructableExcelVo extractWorkBook(Workbook wb) {
         List<StructableFileVO> fileVOS = new ArrayList<>();
 
         List<List<Object>> datas = new ArrayList<>();
@@ -93,13 +65,14 @@ public class ExcelParser extends FileParser {
                     continue;
                 }
                 datas.add(getCellDatas(row));
-
-
             }
             fileVO.setDataRows(dataList2DataRows(datas));
             fileVOS.add(fileVO);
         }
-        return fileVOS;
+        StructableExcelVo excelVo = new StructableExcelVo();
+        excelVo.setValues(fileVOS);
+
+        return excelVo;
     }
 
     /**
@@ -145,7 +118,6 @@ public class ExcelParser extends FileParser {
                             //整数,排除了科学计数法那么长的整数，剩下的整数long应该够用了,并且把类似1.0截取成1
                             cellDatas.add(Long.parseLong(strValue.substring(0, strValue.lastIndexOf('.'))));
                         }
-
                     }
                     break;
                 case BOOLEAN:
@@ -158,24 +130,6 @@ public class ExcelParser extends FileParser {
 
         return cellDatas;
     }
-
-    /**
-     * @author 张定平
-     * @description 获取文件内容
-     * @date 2019/7/22 10:35
-     */
-    public List<StructableFileVO> getContent(String path) {
-        File file = new File(path);
-        //Excel2007- 与 Excel2007+
-        boolean isXlsx = path.toUpperCase().endsWith(".XLSX");
-
-        if (isXlsx) {
-            return extractXssfContents(file);
-        }
-
-        return extractHssfContents(file);
-    }
-
 
     /**
      * @author 张定平
@@ -200,6 +154,8 @@ public class ExcelParser extends FileParser {
                 case BLANK:
                     //如果剩下的都说空的，那么就不添加
                     break;
+                case BOOLEAN:
+                    headers.add(String.valueOf(cell.getBooleanCellValue()));break;
                 default:
                     headers.add(cell.getStringCellValue());
                     break;

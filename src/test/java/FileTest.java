@@ -3,12 +3,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.deepz.fileparse.EmailParser;
 import com.deepz.fileparse.JsonParser;
+import com.deepz.fileparse.ParserUtils;
 import com.deepz.fileparse.PptParser;
-import com.deepz.fileparse.vo.StructableEmailVo;
 import org.junit.Test;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,16 +31,9 @@ public class FileTest {
     @Test
     public void process() {
         String path = "C:\\Users\\zhangdingping\\Desktop\\tika\\tika.eml";
-        try {
-            StructableEmailVo parse = emailParser.parse(path);
-            System.out.println(parse.getPlainContent());
-            System.out.println("---------------------");
-            System.out.println(parse.getHtmlContent());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        ParserUtils parserUtils = new ParserUtils();
+        Object parse = parserUtils.parse(path);
+        System.out.println(parse);
     }
 
     /**

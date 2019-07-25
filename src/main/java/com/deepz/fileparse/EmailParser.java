@@ -19,16 +19,17 @@ import java.util.List;
  */
 public class EmailParser implements FileParse<StructableEmailVo> {
 
-
     @Override
-    public StructableEmailVo parse(String path) throws IOException, MessagingException {
-//        java.net.URL classUrl = this.getClass().getResource("com.sun.mail.util.TraceInputStream");
-//        System.out.println(classUrl.getFile());
-
-
+    public StructableEmailVo parse(String path) {
         File file = new File(path);
-
-        MimeMessage mimeMessage = MimeMessageUtils.createMimeMessage(null, file);
+        MimeMessage mimeMessage = null;
+        try {
+            mimeMessage = MimeMessageUtils.createMimeMessage(null, file);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         MimeMessageParser parser = new MimeMessageParser(mimeMessage);
 
         StructableEmailVo emailVo = new StructableEmailVo();

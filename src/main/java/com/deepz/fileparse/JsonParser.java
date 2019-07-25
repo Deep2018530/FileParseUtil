@@ -5,8 +5,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.deepz.fileparse.enums.JSONEnum;
 import com.deepz.fileparse.vo.StructableFileVO;
+import com.deepz.fileparse.vo.StructableJsonVo;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -17,22 +17,25 @@ import java.util.stream.Collectors;
  * @date 2019/7/22 17:32
  * @description
  */
-public class JsonParser extends FileParser {
+public class JsonParser implements FileParse<StructableJsonVo> {
 
     /**
      * @author zhangdingping
      * @description 解析文件
      * @date 2019/7/24 15:58
      */
-    public StructableFileVO parse(String path) {
+    @Override
+    public StructableJsonVo parse(String path) {
         StructableFileVO fileVO = new StructableFileVO();
-        String text = super.getText(new File(path));
+        String text = parseToString(path);
         List<String> headers = getHeaders(text);
         fileVO.setHeaders(headers);
         Object[][] data = getData(text, fileVO.getHeaders());
         fileVO.setDataRows(data);
-        System.out.println(data);
-        return fileVO;
+
+        StructableJsonVo jsonVo = new StructableJsonVo();
+        jsonVo.setValues(fileVO);
+        return jsonVo;
     }
 
     /**
@@ -42,7 +45,6 @@ public class JsonParser extends FileParser {
      */
     private Object[][] getData(String jsonStr, List<String> headers) {
         List<List<Object>> results = new ArrayList<>();
-
         JSONEnum checkJson = checkJson(jsonStr);
         if (headers == null) {
             List<Object> result = new ArrayList<>();
