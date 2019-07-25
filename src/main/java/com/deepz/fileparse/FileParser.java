@@ -11,13 +11,9 @@ import java.io.IOException;
  * @date 2019/7/19 13:28
  * @description
  */
-public abstract class FileParser {
+public class FileParser{
 
-    /** 
-     * @author 张定平
-     * @description 提取文件中的内容
-     * @date 2019/7/19 13:54
-     */
+
     public String getText(File file) {
 
         Tika tika = new Tika();
@@ -31,11 +27,6 @@ public abstract class FileParser {
         return null;
     }
 
-    /** 
-     * @author 张定平
-     * @description
-     * @date 2019/7/19 13:55
-     */
     public String getText(String filePath) {
 
         File file = new File(filePath);

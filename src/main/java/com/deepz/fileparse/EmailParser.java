@@ -1,41 +1,66 @@
 package com.deepz.fileparse;
 
-import javax.mail.Message;
+import com.deepz.fileparse.vo.StructableEmailVo;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.mail.util.MimeMessageParser;
+import org.apache.commons.mail.util.MimeMessageUtils;
+
+import javax.mail.Address;
 import javax.mail.MessagingException;
-import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import java.util.List;
 
 /**
  * @author zhangdingping
  * @date 2019/7/24 16:43
  * @description
  */
-public class EmailParser extends FileParser {
+public class EmailParser implements FileParse<StructableEmailVo> {
 
 
-    public Message parse(String path) throws IOException, MessagingException {
+    @Override
+    public StructableEmailVo parse(String path) throws IOException, MessagingException {
+//        java.net.URL classUrl = this.getClass().getResource("com.sun.mail.util.TraceInputStream");
+//        System.out.println(classUrl.getFile());
+
 
         File file = new File(path);
 
-        Properties properties = System.getProperties();
-        Properties props = System.getProperties();
-        props.put("mail.host", "smtp.dummydomain.com");
-        props.put("mail.transport.protocol", "smtp");
+        MimeMessage mimeMessage = MimeMessageUtils.createMimeMessage(null, file);
+        MimeMessageParser parser = new MimeMessageParser(mimeMessage);
 
-        Session mailSession = Session.getDefaultInstance(props, null);
-        InputStream source = new FileInputStream(file);
-        MimeMessage message = new MimeMessage(mailSession, source);
+        StructableEmailVo emailVo = new StructableEmailVo();
 
-        System.out.println("Subject : " + message.getSubject());
-        System.out.println("From : " + message.getFrom()[0]);
-        System.out.println("--------------");
-        System.out.println("Body : " + message.getContent());
+        try {
+            //邮件的收件人
+            List<Address> to = parser.getTo();
+            //邮件的“抄送"收件人
+            List<Address> cc = parser.getCc();
+            //邮件的"密件抄送"收件人
+            List<Address> bcc = parser.getBcc();
+            //消息的“发件人"字段
+            String from = parser.getFrom();
+            //电子邮件的"回复"地址
+            String replyTo = parser.getReplyTo();
+            //邮件主题
+            String subject = parser.getSubject();
 
-        return message;
+            //调用parse()才能提取内容(官方api对该方法的原文解释"Does the actual extraction.")
+            MimeMessageParser parse = parser.parse();
+            String plainContent = null;
+            String htmlContent = null;
+            if (parse.hasPlainContent()) {
+                //纯邮件内容
+                plainContent = parse.getPlainContent();
+                //HTML邮件内容
+                htmlContent = parse.getHtmlContent();
+            }
+            BeanUtils.copyProperties(emailVo, parser);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return emailVo;
     }
 }
