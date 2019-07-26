@@ -1,4 +1,4 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.parse;
 
 import com.deepz.fileparse.vo.StructableEmailVo;
 import org.apache.commons.beanutils.BeanUtils;

@@ -7,6 +7,9 @@ package com.deepz.fileparse.vo;
  */
 public class StructableJsonVo {
 
+    /**
+     * 结构化对象
+     */
     private StructableFileVO values;
 
     public StructableFileVO getValues() {

@@ -1,4 +1,4 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.parse;
 
 import com.deepz.fileparse.vo.StructableExcelVo;
 import com.deepz.fileparse.vo.StructableFileVO;

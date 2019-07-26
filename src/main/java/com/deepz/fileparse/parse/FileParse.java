@@ -1,4 +1,4 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.parse;
 
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;

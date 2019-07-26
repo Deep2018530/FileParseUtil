@@ -1,4 +1,4 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.parse;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -32,7 +32,6 @@ public class JsonParser implements FileParse<StructableJsonVo> {
         fileVO.setHeaders(headers);
         Object[][] data = getData(text, fileVO.getHeaders());
         fileVO.setDataRows(data);
-
         StructableJsonVo jsonVo = new StructableJsonVo();
         jsonVo.setValues(fileVO);
         return jsonVo;
@@ -46,7 +45,7 @@ public class JsonParser implements FileParse<StructableJsonVo> {
     private Object[][] getData(String jsonStr, List<String> headers) {
         List<List<Object>> results = new ArrayList<>();
         JSONEnum checkJson = checkJson(jsonStr);
-        if (headers == null) {
+        if (headers != null) {
             List<Object> result = new ArrayList<>();
             switch (checkJson) {
                 case JSONArray:
@@ -67,8 +66,9 @@ public class JsonParser implements FileParse<StructableJsonVo> {
                 default:
                     break;
             }
-        }
+        }else{
 
+        }
 
         Object[][] obj = new Object[results.size()][];
         for (int i = 0; i < obj.length; i++) {

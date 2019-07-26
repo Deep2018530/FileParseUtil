@@ -1,5 +1,7 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.parse;
 
+import com.deepz.fileparse.enums.TitleEnum;
+import com.deepz.fileparse.vo.StructableWordVo;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.model.StyleDescription;
 import org.apache.poi.hwpf.model.StyleSheet;
@@ -18,48 +20,89 @@ import java.util.List;
  * @date 2019/7/19 11:27
  * @description
  */
-public class WordParser extends FileParser {
+public class WordParser implements FileParse<StructableWordVo> {
+
+
+    /**
+     * @author zhangdingping
+     * @description
+     * @date 2019/7/26 10:07
+     */
+    @Override
+    public StructableWordVo parse(String path) {
+        StructableWordVo wordVo = new StructableWordVo();
+        wordVo.setContent(parseToString(new File(path)));
+        wordVo.setHeads(getHead(path));
+        return wordVo;
+    }
 
     /**
      * @author 张定平
      * @description 获取文档中的标题
      * @date 2019/7/19 14:00
      */
-    public List<String> getTitle(File file) {
+    public List<StructableWordVo.Head> getHead(String path) {
+        File file = new File(path);
         if (file.getAbsolutePath().toUpperCase().endsWith(".DOC")) {
 
-            return getTitle2003(file);
+            return getHwpfHead(path);
         }
         if (file.getAbsolutePath().toUpperCase().endsWith(".DOCX")) {
 
-            return getTitle2007(file);
+            return getXwpfHead(path);
         }
 
         return null;
     }
 
     /**
-     * @author 张定平
-     * @description 获取doc后缀的文档目录
-     * @date 2019/7/19 15:35
+     * @author zhangdingping
+     * @description .docx 获取标题页码相关信息
+     * @date 2019/7/26 10:22
      */
-    @NotNull
-    private List<String> getTitle2003(File file) {
-        String path = file.getAbsolutePath();
-        InputStream is = null;
+    private List<StructableWordVo.Head> getXwpfHead(String path) {
+        List<StructableWordVo.Head> heads = new ArrayList<>();
+        File file = new File(path);
+        XWPFDocument document = null;
+
         try {
-            is = new FileInputStream(path);
-        } catch (FileNotFoundException e) {
+            document = new XWPFDocument(new FileInputStream(file));
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        List<XWPFParagraph> paragraphs = document.getParagraphs();
+        for (int i = 0; i < paragraphs.size(); i++) {
+            String style = paragraphs.get(i).getStyle();
+            if (style != null) {
+                //(n-1)一般代表几级标题
+                if (Integer.parseInt(style) < 7) {
+                    StructableWordVo.Head head = new StructableWordVo.Head();
+                    head.setTitle(paragraphs.get(i).getText());
+                    head.setStyle(TitleEnum.findTitle(Integer.parseInt(style)));
+                    heads.add(head);
+                }
+            }
+
+        }
+        return heads;
+    }
+
+    /**
+     * @author zhangdingping
+     * @description .doc
+     * @date 2019/7/26 10:22
+     */
+    private List<StructableWordVo.Head> getHwpfHead(String path) {
+        List<StructableWordVo.Head> heads = new ArrayList<>();
+
         HWPFDocument doc = null;
+
         try {
-            doc = new HWPFDocument(is);
+            doc = new HWPFDocument(new FileInputStream(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Range r = doc.getRange();
-        List<String> list = new ArrayList<>();
         for (int i = 0; i < r.numParagraphs(); i++) {
             Paragraph p = r.getParagraph(i);
             int numStyles = doc.getStyleSheet().numStyles();
@@ -69,16 +112,18 @@ public class WordParser extends FileParser {
                 StyleDescription style = style_sheet.getStyleDescription(styleIndex);
                 String styleName = style.getName();
                 if (styleName != null && styleName.contains("标题")) {
-                    String text = p.text();
-                    list.add(text);
+                    StructableWordVo.Head head = new StructableWordVo.Head();
+                    head.setTitle(p.text());
+                    heads.add(head);
                 }
             }
         }
-        return list;
+        return heads;
     }
 
+
     @NotNull
-    private List<String> getTitle2007(File file) {
+    private List<String> doGetTitle2007(File file) {
         List<String> list = new ArrayList<>();
         InputStream is = null;
         XWPFDocument document = null;
@@ -106,4 +151,6 @@ public class WordParser extends FileParser {
         }
         return list;
     }
+
+
 }
