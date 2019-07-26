@@ -7,7 +7,8 @@ import com.deepz.fileparse.vo.StructablePptVo;
  * @date 2019/7/19 13:52
  * @description
  */
-public class PptParser implements FileParse<StructablePptVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = {"ppt", "pptx"})
+public class PptParser implements Parser<StructablePptVo> {
 
 
     @Override

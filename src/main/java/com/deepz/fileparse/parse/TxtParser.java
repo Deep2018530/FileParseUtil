@@ -7,7 +7,8 @@ import com.deepz.fileparse.vo.StructableTxtVo;
  * @date 2019/7/19 13:54
  * @description
  */
-public class TxtParser implements FileParse<StructableTxtVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = "txt")
+public class TxtParser implements Parser<StructableTxtVo> {
 
     /**
      * @author zhangdingping

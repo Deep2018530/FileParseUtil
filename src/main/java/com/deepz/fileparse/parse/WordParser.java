@@ -20,7 +20,8 @@ import java.util.List;
  * @date 2019/7/19 11:27
  * @description
  */
-public class WordParser implements FileParse<StructableWordVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = {"doc", "docx"})
+public class WordParser implements Parser<StructableWordVo> {
 
 
     /**

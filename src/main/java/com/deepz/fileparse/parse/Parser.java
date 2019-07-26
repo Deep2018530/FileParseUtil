@@ -7,7 +7,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public interface FileParse<T> {
+/**
+ * 文件解析策略
+ * @param <T>
+ */
+public interface Parser<T> {
+
+
     /**
      * @author zhangdingping
      * @description 解析文件

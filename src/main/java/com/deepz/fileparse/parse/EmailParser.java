@@ -17,7 +17,8 @@ import java.util.List;
  * @date 2019/7/24 16:43
  * @description
  */
-public class EmailParser implements FileParse<StructableEmailVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = "eml")
+public class EmailParser implements Parser<StructableEmailVo> {
 
     @Override
     public StructableEmailVo parse(String path) {

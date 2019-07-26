@@ -17,7 +17,8 @@ import java.util.stream.Collectors;
  * @date 2019/7/22 17:32
  * @description
  */
-public class JsonParser implements FileParse<StructableJsonVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = "json")
+public class JsonParser implements Parser<StructableJsonVo> {
 
     /**
      * @author zhangdingping

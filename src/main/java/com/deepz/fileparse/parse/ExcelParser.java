@@ -20,7 +20,8 @@ import java.util.List;
  * @date 2019/7/19 13:51
  * @description
  */
-public class ExcelParser implements FileParse<StructableExcelVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = {"xls", "xlsx"})
+public class ExcelParser implements Parser<StructableExcelVo> {
 
     /**
      * @author 张定平
@@ -155,7 +156,8 @@ public class ExcelParser implements FileParse<StructableExcelVo> {
                     //如果剩下的都说空的，那么就不添加
                     break;
                 case BOOLEAN:
-                    headers.add(String.valueOf(cell.getBooleanCellValue()));break;
+                    headers.add(String.valueOf(cell.getBooleanCellValue()));
+                    break;
                 default:
                     headers.add(cell.getStringCellValue());
                     break;

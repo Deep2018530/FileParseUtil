@@ -26,7 +26,8 @@ import java.util.Map;
  * @date 2019/7/19 10:21
  * @description
  */
-public class PdfParser implements FileParse<StructablePdfVo> {
+@com.deepz.fileparse.annotation.Parser(fileType = "pdf")
+public class PdfParser implements Parser<StructablePdfVo> {
 
 
     /**
