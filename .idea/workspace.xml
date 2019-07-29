@@ -2,38 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf5a0f7-fe2a-4b9c-9143-5734fbaa17e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PptParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/TxtParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/EmailParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/ExcelParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/ExcelParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/FileParse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/FileParse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/FileParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/ParserUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/ParserUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/PdfParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PdfParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/PptParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/TxtParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/WordParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/WordParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/vo/StructableJsonVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/vo/StructableJsonVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FileTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/WordTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/EmailParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/ExcelParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/ExcelParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/FileParse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/FileParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/JsonParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/JsonParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/ParserUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/ParserUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/PdfParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/PptParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/TxtParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/WordParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableJsonVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableJsonVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/FileTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/WordTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/ParserUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/constant/PropertiesLocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/enums/JSONEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/enums/TitleEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/exception/NotPdfFileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/EmailParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/ExcelParser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/ExcelParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/FileParse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/JsonParser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/JsonParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/PdfParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/PptParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/TxtParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/WordParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableEmailVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableExcelVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableFileVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableJsonVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructablePdfVo$Head.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructablePdfVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructablePptVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableTxtVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableWordVo$Head.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/vo/StructableWordVo.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,10 +46,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/FileParse.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+            <state relative-caret-position="190">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/ExcelParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="855">
+              <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,81 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/ParserUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1060#1061#0" expanded="true" />
-                <element signature="e#1092#1093#0" expanded="true" />
-                <element signature="e#1145#1146#0" expanded="true" />
-                <element signature="e#1187#1188#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/ExcelParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/constant/PropertiesLocation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/parserClassName.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PptParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="19" column="19" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="570">
+              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/JsonParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="23" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,6 +101,7 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -202,16 +136,25 @@
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/vo/StructableTxtVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/TxtParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/enums/TitleEnum.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/constant/PropertiesConstant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/constant/PropertiesLoactionConstant.java" />
         <option value="$PROJECT_DIR$/src/parserClassName.properties" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/constant/PropertiesLocation.java" />
         <option value="$PROJECT_DIR$/src/main/resources/parserClassName.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/FileParse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/FileParser.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/annotation/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/JsonParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PdfParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PptParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/TxtParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/WordParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/FileParse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/ParserUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/ExcelParser.java" />
       </list>
     </option>
   </component>
@@ -270,10 +213,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="672" />
-    <option name="y" value="20" />
-    <option name="width" value="1750" />
-    <option name="height" value="1464" />
+    <option name="x" value="865" />
+    <option name="y" value="16" />
+    <option name="width" value="1400" />
+    <option name="height" value="1174" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -345,7 +288,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="deepz" type="462c0819:PsiDirectoryNode" />
               <item name="fileparse" type="462c0819:PsiDirectoryNode" />
-              <item name="constant" type="462c0819:PsiDirectoryNode" />
+              <item name="parse" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fileparse" type="b2602c69:ProjectViewProjectNode" />
@@ -356,7 +299,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="deepz" type="462c0819:PsiDirectoryNode" />
               <item name="fileparse" type="462c0819:PsiDirectoryNode" />
-              <item name="parse" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fileparse" type="b2602c69:ProjectViewProjectNode" />
@@ -378,6 +321,10 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="fileparse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -386,7 +333,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564129899597" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564136731932" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lygrproject" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -528,7 +475,7 @@
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992272" visible="true" weight="0.16516966" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992272" visible="true" weight="0.19810379" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -537,11 +484,11 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.38732395" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.42655936" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5402414" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45975855" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.14486921" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32394367" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32997987" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32997987" />
@@ -553,37 +500,9 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Structure" order="8" sideWeight="0.5025974" side_tool="true" weight="0.32984033" />
+      <window_info anchor="right" id="Structure" order="8" sideWeight="0.5025974" side_tool="true" weight="0.23802395" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.22055888" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18862276" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.52112675" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.41348088" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.40140846" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32997987" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.32984033" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
@@ -593,73 +512,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-email/1.5/commons-email-1.5.jar!/org/apache/commons/mail/util/MimeMessageParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2-sources.jar!/javax/mail/internet/MimeMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="107" column="13" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.jar!/javax/mail/Session.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="125" column="36" selection-start-line="125" selection-start-column="36" selection-end-line="126" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#28411#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2-sources.jar!/javax/mail/Session.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="260" column="12" selection-start-line="260" selection-start-column="12" selection-end-line="260" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3.jar!/org/apache/commons/beanutils/BeanUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2-sources.jar!/javax/mail/internet/InternetHeaders.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7144">
-          <caret line="422" column="55" selection-start-line="422" selection-start-column="55" selection-end-line="422" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#1464#1658#0" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/commons-beanutils/commons-beanutils/1.9.3/commons-beanutils-1.9.3-sources.jar!/org/apache/commons/beanutils/BeanUtilsBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -785,16 +637,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/FileTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="34" column="47" selection-start-line="33" selection-start-column="7" selection-end-line="34" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/FileTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/vo/StructableWordVo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="781">
@@ -858,16 +701,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/FileParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/FileParser.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/vo/StructableTxtVo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -881,16 +715,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/WordTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/WordTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/enums/JSONEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -925,24 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/TxtParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/WordParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getXwpfHead#0;class#WordParser#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.8.RELEASE/spring-web-5.1.8.RELEASE.jar!/org/springframework/web/multipart/commons/CommonsMultipartFile.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -954,13 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="95" column="18" selection-start-line="95" selection-start-column="18" selection-end-line="95" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -985,20 +785,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/parserClassName.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/reflections/reflections/0.9.11/reflections-0.9.11.jar!/org/reflections/Reflections.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="355" column="25" selection-start-line="355" selection-start-column="25" selection-end-line="355" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/reflections/reflections/0.9.11/reflections-0.9.11-sources.jar!/org/reflections/Reflections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="450" column="73" lean-forward="true" selection-start-line="450" selection-start-column="73" selection-end-line="450" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/21.0/guava-21.0.jar!/com/google/common/collect/Sets.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/21.0/guava-21.0-sources.jar!/com/google/common/collect/Sets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="1623" column="57" lean-forward="true" selection-start-line="1623" selection-start-column="57" selection-end-line="1623" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/28.0-jre/guava-28.0-jre.jar!/com/google/common/collect/Sets.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/28.0-jre/guava-28.0-jre-sources.jar!/com/google/common/collect/Sets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-209">
+          <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PdfParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="22" />
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1007,15 +868,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/PptParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="22" />
+        <state relative-caret-position="190">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/TxtParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/WordParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getXwpfHead#0;class#WordParser#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/annotation/Parser.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/constant/PropertiesLocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/Parser.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/ExcelParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="24" />
+        <state relative-caret-position="855">
+          <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1025,54 +929,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/JsonParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="23" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/FileParse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/constant/PropertiesLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/parserClassName.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/ParserUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="570">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1145#1146#0" expanded="true" />
-            <element signature="e#1187#1188#0" expanded="true" />
           </folding>
         </state>
       </provider>
