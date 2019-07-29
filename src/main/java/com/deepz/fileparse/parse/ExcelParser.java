@@ -1,7 +1,8 @@
 package com.deepz.fileparse.parse;
 
-import com.deepz.fileparse.vo.StructableExcelVo;
-import com.deepz.fileparse.vo.StructableFileVO;
+import com.deepz.fileparse.domain.dto.FileDto;
+import com.deepz.fileparse.domain.vo.StructableExcelVo;
+import com.deepz.fileparse.domain.vo.StructableFileVO;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
@@ -23,6 +24,27 @@ import java.util.List;
 @com.deepz.fileparse.annotation.Parser(fileType = {"xls", "xlsx"})
 public class ExcelParser implements Parser<StructableExcelVo> {
 
+
+    /**
+     * @description
+     * @author DeepSleeping
+     * @date 2019/7/29 11:37
+     */
+    @Override
+    public StructableExcelVo parse(FileDto fileDto) {
+
+        String suffx = fileDto.getSuffx();
+        boolean isXlsx = suffx.equals("xlsx");
+        Workbook wb = null;
+        try {
+            //解析execl文件(2007+ 后缀.xlsx    HSSF对应2007-)
+            wb = isXlsx == true ? new XSSFWorkbook(fileDto.getInputStream()) : new HSSFWorkbook(new POIFSFileSystem(fileDto.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return doParse(wb);
+    }
+
     /**
      * @author 张定平
      * @description 解析Excel文件
@@ -38,16 +60,15 @@ public class ExcelParser implements Parser<StructableExcelVo> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return extractWorkBook(wb);
+        return doParse(wb);
     }
-
 
     /**
      * @author 张定平
      * @description 解析excel的工作空间
      * @date 2019/7/22 14:21
      */
-    private StructableExcelVo extractWorkBook(Workbook wb) {
+    private StructableExcelVo doParse(Workbook wb) {
         List<StructableFileVO> fileVOS = new ArrayList<>();
 
         List<List<Object>> datas = new ArrayList<>();

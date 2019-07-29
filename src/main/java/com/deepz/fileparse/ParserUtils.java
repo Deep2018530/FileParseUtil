@@ -1,5 +1,6 @@
 package com.deepz.fileparse;
 
+import com.deepz.fileparse.domain.dto.FileDto;
 import com.deepz.fileparse.parse.Parser;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -40,19 +41,19 @@ public class ParserUtils {
                 e.printStackTrace();
             }
             com.deepz.fileparse.annotation.Parser annotation = clazz.getAnnotation(com.deepz.fileparse.annotation.Parser.class);
-            String[] strings = annotation.fileType();
-            for (int i = 0; i < strings.length; i++) {
-                beanDefinitions.put(strings[i], parserImpl);
+            String[] fileTypes = annotation.fileType();
+            for (int i = 0; i < fileTypes.length; i++) {
+                beanDefinitions.put(fileTypes[i], parserImpl);
             }
         }
     }
 
 
-    public <T> T parse(String path) {
-        String suffix = path.substring(path.lastIndexOf('.') + 1, path.length());
-        this.parser = (Parser) beanDefinitions.get(suffix);
+    public <T> T parse(FileDto fileDto) {
+        //String suffix = path.substring(path.lastIndexOf('.') + 1, path.length());
+        this.parser = (Parser) beanDefinitions.get(fileDto.getSuffx());
 
-        return (T) parser.parse(path);
+        return (T) parser.parse(fileDto);
     }
 
     public Parser getParser() {

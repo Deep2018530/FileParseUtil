@@ -1,7 +1,9 @@
 package com.deepz.fileparse.parse;
 
-import com.deepz.fileparse.enums.TitleEnum;
-import com.deepz.fileparse.vo.StructableWordVo;
+import com.deepz.fileparse.StreamUtils;
+import com.deepz.fileparse.domain.dto.FileDto;
+import com.deepz.fileparse.domain.enums.TitleEnum;
+import com.deepz.fileparse.domain.vo.StructableWordVo;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.model.StyleDescription;
 import org.apache.poi.hwpf.model.StyleSheet;
@@ -23,6 +25,26 @@ import java.util.List;
 @com.deepz.fileparse.annotation.Parser(fileType = {"doc", "docx"})
 public class WordParser implements Parser<StructableWordVo> {
 
+    /**
+     * 输入流转换后的字节数组(用于流复用)
+     */
+    private byte[] bytes;
+
+    /**
+     * @description
+     * @author DeepSleeping
+     * @date 2019/7/29 13:26
+     */
+    @Override
+    public StructableWordVo parse(FileDto fileDto) {
+        bytes = StreamUtils.inputToByteArray(fileDto.getInputStream());
+
+        StructableWordVo vo = new StructableWordVo();
+        List<StructableWordVo.Head> heads = fileDto.getSuffx().equals("doc") ? getHwpfHead() : getXwpfHead();
+        vo.setContent(parseToString(new ByteArrayInputStream(bytes)));
+        return vo;
+    }
+
 
     /**
      * @author zhangdingping
@@ -36,6 +58,7 @@ public class WordParser implements Parser<StructableWordVo> {
         wordVo.setHeads(getHead(path));
         return wordVo;
     }
+
 
     /**
      * @author 张定平
@@ -55,6 +78,32 @@ public class WordParser implements Parser<StructableWordVo> {
 
         return null;
     }
+
+    private List<StructableWordVo.Head> getXwpfHead() {
+        List<StructableWordVo.Head> heads = new ArrayList<>();
+        XWPFDocument document = null;
+        try (InputStream is = new ByteArrayInputStream(bytes)) {
+            document = new XWPFDocument(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<XWPFParagraph> paragraphs = document.getParagraphs();
+        for (int i = 0; i < paragraphs.size(); i++) {
+            String style = paragraphs.get(i).getStyle();
+            if (style != null) {
+                //(n-1)一般代表几级标题
+                if (Integer.parseInt(style) < 7) {
+                    StructableWordVo.Head head = new StructableWordVo.Head();
+                    head.setTitle(paragraphs.get(i).getText());
+                    head.setStyle(TitleEnum.findTitle(Integer.parseInt(style)));
+                    heads.add(head);
+                }
+            }
+
+        }
+        return heads;
+    }
+
 
     /**
      * @author zhangdingping
@@ -87,6 +136,35 @@ public class WordParser implements Parser<StructableWordVo> {
         }
         return heads;
     }
+
+    private List<StructableWordVo.Head> getHwpfHead() {
+        List<StructableWordVo.Head> heads = new ArrayList<>();
+
+        HWPFDocument doc = null;
+        try (InputStream is = new ByteArrayInputStream(bytes)) {
+            doc = new HWPFDocument(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Range r = doc.getRange();
+        for (int i = 0; i < r.numParagraphs(); i++) {
+            Paragraph p = r.getParagraph(i);
+            int numStyles = doc.getStyleSheet().numStyles();
+            int styleIndex = p.getStyleIndex();
+            if (numStyles > styleIndex) {
+                StyleSheet style_sheet = doc.getStyleSheet();
+                StyleDescription style = style_sheet.getStyleDescription(styleIndex);
+                String styleName = style.getName();
+                if (styleName != null && styleName.contains("标题")) {
+                    StructableWordVo.Head head = new StructableWordVo.Head();
+                    head.setTitle(p.text());
+                    heads.add(head);
+                }
+            }
+        }
+        return heads;
+    }
+
 
     /**
      * @author zhangdingping
@@ -139,6 +217,30 @@ public class WordParser implements Parser<StructableWordVo> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        List<XWPFParagraph> paragraphs = document.getParagraphs();
+        for (int i = 0; i < paragraphs.size(); i++) {
+            String style = paragraphs.get(i).getStyle();
+            if (style != null) {
+                //n代表几级标题
+                if (Integer.parseInt(style) < 9) {
+                    list.add(paragraphs.get(i).getText());
+                }
+            }
+
+        }
+        return list;
+    }
+
+    private List<String> doGetTitle2007(InputStream inputStream) {
+        List<String> list = new ArrayList<>();
+        XWPFDocument document = null;
+
+        try (InputStream is = inputStream) {
+            document = new XWPFDocument(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         List<XWPFParagraph> paragraphs = document.getParagraphs();
         for (int i = 0; i < paragraphs.size(); i++) {
             String style = paragraphs.get(i).getStyle();

@@ -3,9 +3,9 @@ package com.deepz.fileparse.parse;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.deepz.fileparse.enums.JSONEnum;
-import com.deepz.fileparse.vo.StructableFileVO;
-import com.deepz.fileparse.vo.StructableJsonVo;
+import com.deepz.fileparse.domain.dto.FileDto;
+import com.deepz.fileparse.domain.enums.JSONEnum;
+import com.deepz.fileparse.domain.vo.StructableJsonVo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,29 +21,44 @@ import java.util.stream.Collectors;
 public class JsonParser implements Parser<StructableJsonVo> {
 
     /**
+     * @description
+     * @author DeepSleeping
+     * @date 2019/7/29 13:09
+     */
+    @Override
+    public StructableJsonVo parse(FileDto fileDto) {
+        String jsonStr = parseToString(fileDto.getInputStream());
+        List<String> headers = getHeaders(jsonStr);
+        Object[][] datas = doParse(jsonStr, headers);
+        StructableJsonVo vo = new StructableJsonVo();
+        vo.setHeaders(headers);
+        vo.setDataRows(datas);
+        return vo;
+    }
+
+    /**
      * @author zhangdingping
      * @description 解析文件
      * @date 2019/7/24 15:58
      */
     @Override
     public StructableJsonVo parse(String path) {
-        StructableFileVO fileVO = new StructableFileVO();
+        StructableJsonVo jsonVo = new StructableJsonVo();
         String text = parseToString(path);
         List<String> headers = getHeaders(text);
-        fileVO.setHeaders(headers);
-        Object[][] data = getData(text, fileVO.getHeaders());
-        fileVO.setDataRows(data);
-        StructableJsonVo jsonVo = new StructableJsonVo();
-        jsonVo.setValues(fileVO);
+        jsonVo.setHeaders(headers);
+        Object[][] data = doParse(text, jsonVo.getHeaders());
+        jsonVo.setDataRows(data);
         return jsonVo;
     }
+
 
     /**
      * @author zhangdingping
      * @description 获取json字符串数据值
      * @date 2019/7/24 11:05
      */
-    private Object[][] getData(String jsonStr, List<String> headers) {
+    private Object[][] doParse(String jsonStr, List<String> headers) {
         List<List<Object>> results = new ArrayList<>();
         JSONEnum checkJson = checkJson(jsonStr);
         if (headers != null) {
@@ -67,7 +82,7 @@ public class JsonParser implements Parser<StructableJsonVo> {
                 default:
                     break;
             }
-        }else{
+        } else {
 
         }
 

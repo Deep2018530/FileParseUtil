@@ -1,5 +1,6 @@
 package com.deepz.fileparse.parse;
 
+import com.deepz.fileparse.domain.dto.FileDto;
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 
@@ -9,6 +10,7 @@ import java.io.InputStream;
 
 /**
  * 文件解析策略
+ *
  * @param <T>
  */
 public interface Parser<T> {
@@ -19,20 +21,33 @@ public interface Parser<T> {
      * @description 解析文件
      * @date 2019/7/25 18:09
      */
-    T parse(String path);
+    default T parse(String path) {
+        return null;
+    }
 
     default T parse(File file) {
         return null;
     }
 
-    default T parse(InputStream inputStream) {
-        return null;
-    }
+    T parse(FileDto fileDto);
 
     default String parseToString(String path) {
         Tika tika = new Tika();
         try {
+
             return tika.parseToString(new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TikaException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    default String parseToString(InputStream inputStream) {
+        Tika tika = new Tika();
+        try {
+            return tika.parseToString(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TikaException e) {

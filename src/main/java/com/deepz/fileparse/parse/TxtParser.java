@@ -1,6 +1,7 @@
 package com.deepz.fileparse.parse;
 
-import com.deepz.fileparse.vo.StructableTxtVo;
+import com.deepz.fileparse.domain.dto.FileDto;
+import com.deepz.fileparse.domain.vo.StructableTxtVo;
 
 /**
  * @author 张定平
@@ -19,6 +20,18 @@ public class TxtParser implements Parser<StructableTxtVo> {
     public StructableTxtVo parse(String path) {
         StructableTxtVo txtVo = new StructableTxtVo();
         txtVo.setContent(parseToString(path));
+        return txtVo;
+    }
+
+    /** 
+     * @description
+     * @author DeepSleeping
+     * @date 2019/7/29 13:36
+     */
+    @Override
+    public StructableTxtVo parse(FileDto fileDto) {
+        StructableTxtVo txtVo = new StructableTxtVo();
+        txtVo.setContent(parseToString(fileDto.getInputStream()));
         return txtVo;
     }
 }

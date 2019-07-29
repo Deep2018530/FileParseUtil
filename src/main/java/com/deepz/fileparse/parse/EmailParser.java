@@ -1,6 +1,7 @@
 package com.deepz.fileparse.parse;
 
-import com.deepz.fileparse.vo.StructableEmailVo;
+import com.deepz.fileparse.domain.dto.FileDto;
+import com.deepz.fileparse.domain.vo.StructableEmailVo;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.mail.util.MimeMessageParser;
 import org.apache.commons.mail.util.MimeMessageUtils;
@@ -20,17 +21,8 @@ import java.util.List;
 @com.deepz.fileparse.annotation.Parser(fileType = "eml")
 public class EmailParser implements Parser<StructableEmailVo> {
 
-    @Override
-    public StructableEmailVo parse(String path) {
-        File file = new File(path);
-        MimeMessage mimeMessage = null;
-        try {
-            mimeMessage = MimeMessageUtils.createMimeMessage(null, file);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    public StructableEmailVo doParse(MimeMessage mimeMessage) {
         MimeMessageParser parser = new MimeMessageParser(mimeMessage);
 
         StructableEmailVo emailVo = new StructableEmailVo();
@@ -65,4 +57,42 @@ public class EmailParser implements Parser<StructableEmailVo> {
         }
         return emailVo;
     }
+
+    /**
+     * @description 通过文件路径解析文件
+     * @author DeepSleeping
+     * @date 2019/7/29 11:25
+     */
+    @Override
+    public StructableEmailVo parse(String path) {
+        File file = new File(path);
+        MimeMessage mimeMessage = null;
+        try {
+            mimeMessage = MimeMessageUtils.createMimeMessage(null, file);
+            return doParse(mimeMessage);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * @description
+     * @author DeepSleeping
+     * @date 2019/7/29 11:36
+     */
+    @Override
+    public StructableEmailVo parse(FileDto fileDto) {
+        MimeMessage mimeMessage = null;
+        try {
+            mimeMessage = MimeMessageUtils.createMimeMessage(null, fileDto.getInputStream());
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        return doParse(mimeMessage);
+    }
+
+
 }
