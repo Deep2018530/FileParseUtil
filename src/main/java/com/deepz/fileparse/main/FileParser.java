@@ -1,4 +1,4 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.main;
 
 import com.deepz.fileparse.domain.dto.FileDto;
 import com.deepz.fileparse.parse.Parser;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2019/7/25 18:29
  * @description
  */
-public class ParserUtils {
+public class FileParser {
 
     /**
      * 文件解析策略

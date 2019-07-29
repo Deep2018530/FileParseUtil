@@ -1,6 +1,6 @@
 package com.deepz.fileparse.parse;
 
-import com.deepz.fileparse.StreamUtils;
+import com.deepz.fileparse.common.util.StreamUtils;
 import com.deepz.fileparse.domain.dto.FileDto;
 import com.deepz.fileparse.domain.vo.StructablePdfVo;
 import org.apache.pdfbox.io.RandomAccessBufferedFileInputStream;

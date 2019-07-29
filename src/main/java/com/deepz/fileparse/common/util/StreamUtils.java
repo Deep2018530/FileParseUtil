@@ -1,4 +1,4 @@
-package com.deepz.fileparse;
+package com.deepz.fileparse.common.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

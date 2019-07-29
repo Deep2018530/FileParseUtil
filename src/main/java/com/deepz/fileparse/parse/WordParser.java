@@ -1,6 +1,6 @@
 package com.deepz.fileparse.parse;
 
-import com.deepz.fileparse.StreamUtils;
+import com.deepz.fileparse.common.util.StreamUtils;
 import com.deepz.fileparse.domain.dto.FileDto;
 import com.deepz.fileparse.domain.enums.TitleEnum;
 import com.deepz.fileparse.domain.vo.StructableWordVo;
@@ -11,11 +11,11 @@ import org.apache.poi.hwpf.usermodel.Paragraph;
 import org.apache.poi.hwpf.usermodel.Range;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * @author 张定平
@@ -201,7 +201,6 @@ public class WordParser implements Parser<StructableWordVo> {
     }
 
 
-    @NotNull
     private List<String> doGetTitle2007(File file) {
         List<String> list = new ArrayList<>();
         InputStream is = null;

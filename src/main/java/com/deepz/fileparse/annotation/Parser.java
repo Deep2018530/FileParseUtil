@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
 @Target(value = ElementType.TYPE)
 public @interface Parser {
 
-
     /**
      * 文件类型
      *

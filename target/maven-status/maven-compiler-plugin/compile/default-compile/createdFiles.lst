@@ -1,0 +1,8 @@
+com\deepz\fileparse\parse\PptParser.class
+com\deepz\fileparse\parse\ExcelParser$1.class
+com\deepz\fileparse\parse\JsonParser.class
+com\deepz\fileparse\exception\NotPdfFileException.class
+com\deepz\fileparse\parse\TxtParser.class
+com\deepz\fileparse\parse\ExcelParser.class
+com\deepz\fileparse\parse\EmailParser.class
+com\deepz\fileparse\parse\JsonParser$1.class
