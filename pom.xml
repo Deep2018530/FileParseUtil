@@ -37,6 +37,8 @@
             <artifactId>jbig2-imageio</artifactId>
             <version>3.0.0</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -52,6 +54,8 @@
             <artifactId>poi-scratchpad</artifactId>
             <version>3.15</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.apache.ant</groupId>
             <artifactId>ant</artifactId>
@@ -74,12 +78,7 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.58</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
-            <version>1.4.7</version>
-        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
         <dependency>
             <groupId>org.apache.commons</groupId>
