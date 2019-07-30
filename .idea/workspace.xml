@@ -4,18 +4,6 @@
     <list default="true" id="dcf5a0f7-fe2a-4b9c-9143-5734fbaa17e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/annotation/Parser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/exception/NotPdfFileException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/EmailParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/ExcelParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/ExcelParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/JsonParser$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/JsonParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/PdfParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/PptParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/TxtParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/deepz/fileparse/parse/WordParser.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -66,9 +54,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="76">
-                <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-19">
+                <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
               </first_editor>
               <second_editor />
             </state>
@@ -90,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/main/FileParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+            <state relative-caret-position="1007">
+              <caret line="66" column="1" lean-forward="true" selection-start-line="18" selection-end-line="66" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -386,7 +374,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564454703393" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564454944657" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../OnLineShop" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -528,7 +516,7 @@
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992272" visible="true" weight="0.19660679" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992272" weight="0.19660679" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -541,7 +529,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.499501" weight="0.27565393" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.499501" visible="true" weight="0.27565393" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.500499" side_tool="true" weight="0.32997987" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.499501" weight="0.32997987" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32997987" />
@@ -849,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/main/FileParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/JsonParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -873,6 +854,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/main/FileParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="66" column="1" lean-forward="true" selection-start-line="18" selection-end-line="66" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/deepz/fileparse/parse/EmailParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -885,9 +873,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="76">
-            <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-19">
+            <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           </first_editor>
           <second_editor />
         </state>

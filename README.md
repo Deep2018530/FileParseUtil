@@ -31,10 +31,10 @@
  
 
 ### 增加新的文件解析类
-1. 创建对应文件的vo类,根据情况可选择是否继承**StructableFileVo**
-2. 创建对应的parse解析类，并且该解析类必须在**com.deepz.fileparse.parse**包下，否则无法发现。
-3. 给新建的parse解析类添加注解**@Parse(com.deepz.fileparse.annotation.Parse)**
-4. 给添加的注解设置fileType属性，代表文件类型(如fileType = "doc"、fileType={"xls","xlsx"})
+1. 创建对应文件的`vo类`,根据情况可选择是否继承`StructableFileVo`
+2. 创建对应的`parse解析类`，并且该解析类必须在`com.deepz.fileparse.parse`包下，否则无法发现。
+3. 给新建的parse解析类添加注解`@Parse`(com.deepz.fileparse.annotation.Parse)
+4. 给添加的注解设置`fileType属性`，代表文件类型(如fileType = "doc"、fileType={"xls","xlsx"})
 5. 编写解析类中的代码即可
 
 ### 核心代码展示(与上文需求相关)2019/7/30
