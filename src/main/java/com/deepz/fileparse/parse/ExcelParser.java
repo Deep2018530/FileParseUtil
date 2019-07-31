@@ -8,6 +8,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * @author 张定平
@@ -69,32 +71,53 @@ public class ExcelParser implements Parser<StructableExcelVo> {
      * @date 2019/7/22 14:21
      */
     private StructableExcelVo doParse(Workbook wb) {
-        List<StructableFileVO> fileVOS = new ArrayList<>();
 
-        List<List<Object>> datas = new ArrayList<>();
+        List<StructableFileVO> fileVOS = new CopyOnWriteArrayList<>();
 
-        for (int i = 0, size = wb.getNumberOfSheets(); i < size; i++) {
+        int size = wb.getNumberOfSheets();
+
+        //1031毫秒降低到547毫秒 看来还是有点用的
+        CountDownLatch latch = new CountDownLatch(size);
+        for (int i = 0; i < size; i++) {
             //获取每个工作表
             Sheet sheet = wb.getSheetAt(i);
 
-            StructableFileVO fileVO = new StructableFileVO();
-            List<String> headers = new ArrayList<>();
-            for (Row row : sheet) {
-
-                if (headers.size() == 0 || headers == null) {
-                    setHeaders(headers, row);
-                    fileVO.setHeaders(headers);
-                    continue;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    fileVOS.add(getSheetData(sheet));
+                    latch.countDown();
                 }
-                datas.add(getCellDatas(row));
-            }
-            fileVO.setDataRows(dataList2DataRows(datas));
-            fileVOS.add(fileVO);
+            }).start();
+        }
+        try {
+            //等待执行完毕
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         StructableExcelVo excelVo = new StructableExcelVo();
         excelVo.setValues(fileVOS);
 
         return excelVo;
+    }
+
+    @NotNull
+    private StructableFileVO getSheetData(Sheet sheet) {
+        StructableFileVO fileVO = new StructableFileVO();
+        List<String> headers = new ArrayList<>();
+        List<List<Object>> datas = new ArrayList<>();
+        for (Row row : sheet) {
+
+            if (headers.size() == 0 || headers == null) {
+                setHeaders(headers, row);
+                fileVO.setHeaders(headers);
+                continue;
+            }
+            datas.add(getCellDatas(row));
+        }
+        fileVO.setDataRows(dataList2DataRows(datas));
+        return fileVO;
     }
 
     /**
