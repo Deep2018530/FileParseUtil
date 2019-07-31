@@ -89,6 +89,42 @@ public class FileParser {
 
 }
 ```
+> 引入CountDownLatch,使得Excel解析快了一倍 1031→547
+```java
+public class ExcelParser {
+    private StructableExcelVo doParse(Workbook wb) {
+
+        List<StructableFileVO> fileVOS = new CopyOnWriteArrayList<>();
+
+        int size = wb.getNumberOfSheets();
+
+        //1031毫秒降低到547毫秒 看来还是有点用的
+        CountDownLatch latch = new CountDownLatch(size);
+        for (int i = 0; i < size; i++) {
+            //获取每个工作表
+            Sheet sheet = wb.getSheetAt(i);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    fileVOS.add(getSheetData(sheet));
+                    latch.countDown();
+                }
+            }).start();
+        }
+        try {
+            //等待执行完毕
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        StructableExcelVo excelVo = new StructableExcelVo();
+        excelVo.setValues(fileVOS);
+
+        return excelVo;
+    }
+}
+```
 
 ### 使用
 > 创建FileParser(com.deepz.fileparse.main),将文件上传后的输入流、文件名后缀(suffix)封装成FileDto对象作为入参，调用parse方法即可
